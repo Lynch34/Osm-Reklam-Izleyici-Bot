@@ -14,20 +14,27 @@ time.sleep(3) # Login Sayfasi Bekleme
 
 try:
     driver.find_element(By.XPATH, '/html/body/div[2]/div/div/div/div[2]/div[3]/div/button').click()
+    print("[DEBUG] Giriş tıklandı 1.")
+    print("[DEBUG] 3 saniye bekleniyor.")
     time.sleep(3)
     driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[3]/div[4]/div[2]/button').click()
+    print("[DEBUG] Giriş tıklandı 2")
+    print("[DEBUG] 3 saniye bekleniyor.")
     time.sleep(3)
     driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/div[3]/div[1]/div[1]/form/div[1]/input').send_keys(username)
     driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/div[3]/div[1]/div[1]/form/div[2]/input').send_keys(password)
     driver.find_element(By.XPATH, '/html/body/div[2]/div/div[2]/div[3]/div[1]/div[1]/form/button').click()
+    print("[DEBUG] Giriş tıklandı 3.")
+    print("[DEBUG] 10 saniye bekleniyor.")
     time.sleep(10)
-    driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div/div[4]/ul/li[2]/a').click()
-    time.sleep(3)
-    driver.find_element(By.XPATH, '/html/body/div[3]/div[2]/div/div[4]/ul/li[2]/ul/li/a').click()
+    print("[DEBUG] URL açılıyor.")
+    print("[DEBUG] 5 saniye bekleniyor.")
+    driver.get("https://en.onlinesoccermanager.com/BusinessClub")
     time.sleep(5)
+
 except NoSuchElementException:
     print("XPath bulunamadı. Elemente tıklanamadı.")
-    
+
 start_time = time.time()
 
 while True:
@@ -39,7 +46,7 @@ while True:
             print("Reklama tıklandı.")
             time.sleep(40)
         except Exception as e:
-            print(f"Hata oluştu: {str(e)}")
+            print(f"Reklam izlenmedi (E)")
             time.sleep(5)
         
         # Reklamı geç butonunu dene
@@ -48,7 +55,7 @@ while True:
             print("Reklam geç butonu bulundu ve tıklandı.")
             time.sleep(5)
         except Exception as e:
-            print(f"Hata oluştu: {str(e)}")
+            print(f"Reklam izlenmedi (E)")
             time.sleep(5)
             
         # Reklam sürem bitti mi
@@ -57,7 +64,7 @@ while True:
             print("Reklam izlenmedi.")
             time.sleep(60)
         except Exception as e:
-            print(f"Hata oluştu: {str(e)}")
+            print(f"Reklam izlenmedi (E)")
             time.sleep(5)
 
     elapsed_time = time.time() - start_time
